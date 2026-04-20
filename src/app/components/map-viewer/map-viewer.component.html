@@ -1,0 +1,41 @@
+<div class="map-container">
+  <h1 class="ion-text-center section-title">Ubicación de Juzgados</h1>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="4">
+        <div class="locations-list">
+          @for (office of offices; track office.id) {
+            <ion-item button (click)="selectOffice(office)" class="location-item">
+              <ion-label>
+                <h3>{{ office.name }}</h3>
+                <p>{{ office.address }}</p>
+                <ion-note color="primary">{{ office.hours }}</ion-note>
+              </ion-label>
+            </ion-item>
+          }
+        </div>
+      </ion-col>
+
+      <ion-col size="12" size-md="8">
+        <div class="map-placeholder">
+          <ion-icon name="map-outline"></ion-icon>
+          <p>El mapa interactivo se cargará aquí</p>
+          @if (selectedOffice) {
+            <div class="office-popover">
+              <strong>Sede seleccionada:</strong><br>
+              {{ selectedOffice.name }}
+            </div>
+          }
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="ion-text-center ion-margin-top">
+    <ion-button fill="clear" color="medium" (click)="goBack()">
+      <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+      Regresar al Menú Principal
+    </ion-button>
+  </div>
+</div>

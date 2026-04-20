@@ -1,0 +1,38 @@
+.selector-container {
+  padding: 20px;
+  
+  .selector-title {
+    color: #4a4a4a;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+}
+
+.option-card {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 20px;
+  margin: 15px;
+  cursor: pointer;
+  background-color: var(--card-color, #3b5998);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+  ion-card-content {
+    color: white;
+    
+    ion-icon {
+      font-size: 70px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: white;
+    }
+  }
+}
