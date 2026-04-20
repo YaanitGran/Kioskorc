@@ -20,6 +20,7 @@ import {
 import { HeaderComponent } from '../components/header/header.component';
 import { FooterComponent } from '../components/footer/footer.component';
 import { ProcedureSelectorComponent } from '../components/procedure-selector/procedure-selector.component';
+import { MapViewerComponent } from '../components/map-viewer/map-viewer.component';
 
 
 @Component({
@@ -42,6 +43,7 @@ import { ProcedureSelectorComponent } from '../components/procedure-selector/pro
     HeaderComponent,
     FooterComponent,
     ProcedureSelectorComponent,
+    MapViewerComponent,
   ],
 })
 export class HomePage {
@@ -115,8 +117,7 @@ export class HomePage {
       this.viewState = 'selector';
     }
     else if (view === 'locations') {
-      // Logic for locations will go here later
-      console.log('Navegando a ubicaciones...');
+      this.viewState = 'locations';
     }
   }
 
