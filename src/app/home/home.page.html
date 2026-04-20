@@ -1,45 +1,56 @@
 <app-header></app-header>
+
 <ion-content [fullscreen]="true" class="ion-padding kiosk-background">
-  <div class="header-container">
-    <img src="assets/img/gob-mexico-logo.png" alt="Government Logo" class="main-logo">
-  </div>
 
-  <ion-grid fixed>
-    <ion-row class="ion-justify-content-center">
-      <ion-col size="12" size-md="5">
-        <ion-card (click)="navigateTo('certified-copy')" class="menu-card action-blue">
-          <ion-card-content>
-            <ion-icon name="document-text-outline"></ion-icon>
-            <h2>Solicite acta certificada</h2>
-            <p>Obtenga extractos de acta o copias del libro de manera rápida.</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
+  @if (viewState === 'main') {
+    <ion-grid fixed>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="12" size-md="5">
+          <ion-card (click)="navigateTo('certified-copy')" class="menu-card action-blue">
+            <ion-card-content>
+              <ion-icon name="document-text-outline"></ion-icon>
+              <h2>Solicite acta certificada</h2>
+              <p>Obtenga extractos de acta o copias del libro de manera rápida.</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
 
-      <ion-col size="12" size-md="5">
-        <ion-card (click)="navigateTo('procedures')" class="menu-card action-green">
-          <ion-card-content>
-            <ion-icon name="folder-open-outline"></ion-icon>
-            <h2>Trámites</h2>
-            <p>Consulte requisitos, costos y documentos para su trámite.</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
+        <ion-col size="12" size-md="5">
+          <ion-card (click)="navigateTo('procedures')" class="menu-card action-green">
+            <ion-card-content>
+              <ion-icon name="folder-open-outline"></ion-icon>
+              <h2>Trámites</h2>
+              <p>Consulte requisitos, costos y documentos para su trámite.</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
 
-    <ion-row class="ion-justify-content-center">
-      <ion-col size="12" size-md="10">
-        <ion-card (click)="navigateTo('locations')" class="menu-card action-orange">
-          <ion-card-content class="horizontal-layout">
-            <ion-icon name="location-outline"></ion-icon>
-            <div>
-              <h2>Ubicación de Juzgados</h2>
-              <p>Encuentre la oficina más cercana, horarios y rutas de llegada.</p>
-            </div>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="12" size-md="10">
+          <ion-card (click)="navigateTo('locations')" class="menu-card action-orange">
+            <ion-card-content class="horizontal-layout">
+              <ion-icon name="location-outline"></ion-icon>
+              <div>
+                <h2>Ubicación de Juzgados</h2>
+                <p>Encuentre la oficina más cercana, horarios y rutas de llegada.</p>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  }
+
+  @if (viewState === 'selector') {
+    <app-procedure-selector 
+      [title]="selectorTitle"
+      [options]="currentOptions"
+      (onBack)="handleBack()"
+      (onSelect)="handleOptionSelected($event)">
+    </app-procedure-selector>
+  }
+
 </ion-content>
+
 <app-footer></app-footer>

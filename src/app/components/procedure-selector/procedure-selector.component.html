@@ -1,3 +1,26 @@
-<p>
-  procedure-selector works!
-</p>
+<div class="selector-container">
+  <h1 class="ion-text-center selector-title">{{ title }}</h1>
+  
+  <ion-grid fixed>
+    <ion-row class="ion-justify-content-center">
+      @for (option of options; track option.id) {
+        <ion-col size="12" size-md="5" size-lg="4">
+          <ion-card (click)="selectOption(option)" class="option-card" [style.--card-color]="option.color">
+            <ion-card-content>
+              <ion-icon [name]="option.icon"></ion-icon>
+              <h2>{{ option.label }}</h2>
+              <p>{{ option.description }}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      }
+    </ion-row>
+  </ion-grid>
+
+  <div class="ion-text-center ion-margin-top">
+    <ion-button fill="clear" color="medium" (click)="goBack()">
+      <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+      Regresar al Menú Principal
+    </ion-button>
+  </div>
+</div>
