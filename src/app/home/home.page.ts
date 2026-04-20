@@ -5,26 +5,22 @@ import {
   IonTitle, 
   IonContent,
   IonSearchbar,
-  IonLabel,
-  IonItem,
-  IonList,
   IonIcon,
   IonGrid,
   IonRow,
   IonCol,
-  IonCardContent,
-  IonCardTitle,
-  IonCardHeader,
-  IonButton,
   IonCard,
+  IonCardContent
  } from '@ionic/angular/standalone';
- import { addIcons } from 'ionicons';
+import { addIcons } from 'ionicons';
 import { 
-  heartOutline, 
-  ribbonOutline, 
-  business, 
-  time, 
-  searchOutline, personAddOutline } from 'ionicons/icons';
+  documentTextOutline, 
+  folderOpenOutline, 
+  locationOutline 
+} from 'ionicons/icons';
+import { HeaderComponent } from '../components/header/header.component';
+import { FooterComponent } from '../components/footer/footer.component';
+
 
 @Component({
   selector: 'app-home',
@@ -37,23 +33,19 @@ import {
     IonTitle, 
     IonContent, 
     IonSearchbar,
-    IonLabel,
-    IonItem,
-    IonList,
     IonIcon,
     IonGrid,
     IonRow,
     IonCol,
-    IonCardContent,
-    IonCardTitle,
-    IonCardHeader,
-    IonButton,
     IonCard,
+    IonCardContent,
+    HeaderComponent,
+    FooterComponent,
   ],
 })
 export class HomePage {
   constructor() {
-    addIcons({personAddOutline,heartOutline,ribbonOutline,business,time,searchOutline});
+    addIcons({documentTextOutline,folderOpenOutline,locationOutline,});
   }
   /**
    * @param procedure Type of civil registry procedure selected by the user.
@@ -62,14 +54,12 @@ export class HomePage {
     console.log('Opening procedure:', procedure);
     // Logic for navigation or opening a modal with requirements will go here
   }
-  /**
-   * Filters the procedures based on user input in the search bar.
-   * Implementation for the "Intelligent Search Engine" defined in the backlog.
-   * @param event CustomEvent from ion-searchbar
+ /**
+   * Navigation handler to switch between components/views
+   * @param view The name of the target view
    */
-  buscarTramite(event: any) {
-    const query = event.target.value.toLowerCase();
-    console.log('Filtering procedures for:', query);
-    // Logic to filter the list of procedures dynamically
+  navigateTo(view: string) {
+    console.log('Navigating to:', view);
+    // Logic to switch components will go here
   }
 }

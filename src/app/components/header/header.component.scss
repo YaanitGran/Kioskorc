@@ -1,0 +1,18 @@
+.header-toolbar {
+  --background: #ffffff;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  border-bottom: 3px solid #9f2241; /* Institutional color bar */
+}
+
+.header-logo {
+  height: 60px;
+  margin-left: 20px;
+}
+
+.header-title {
+  color: #6f7271;
+  font-weight: 500;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}

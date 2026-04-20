@@ -1,80 +1,61 @@
-/* home.page.scss */
-
-// Institucional Colors
-$gov-maroon: #621132;
-$gov-gold: #D4C19C;
-$gov-gray: #f4f4f4;
-
-.gov-toolbar {
-  --background: #{$gov-maroon};
-  --color: white;
+/* Kiosk background and layout adjustments */
+.kiosk-background {
+  --background: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.header-banner {
-  background-color: white;
-  border-bottom: 4px solid $gov-gold;
-  
-  h1 {
-    color: $gov-maroon;
-    font-weight: 700;
-    margin-bottom: 5px;
+.header-container {
+  text-align: center;
+  margin-bottom: 2rem;
+  .main-logo {
+    max-width: 300px;
+    height: auto;
   }
-  
+}
+
+.menu-card {
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  margin: 10px;
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  ion-icon {
+    font-size: 80px;
+    margin-bottom: 15px;
+    color: white;
+  }
+
+  h2 {
+    color: white;
+    font-weight: bold;
+    font-size: 1.8rem;
+  }
+
   p {
-    color: #666;
+    color: rgba(255, 255, 255, 0.9);
     font-size: 1.1rem;
   }
 }
 
-.procedure-card {
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
-  cursor: pointer;
-  text-align: center;
-  height: 100%;
+/* Color coding from mockup */
+.action-blue { --background: #3b5998; background: var(--background); }
+.action-green { --background: #2d5a4c; background: var(--background); }
+.action-orange { --background: #e67e22; background: var(--background); }
 
-  &:active {
-    transform: scale(0.98);
-  }
-
-  ion-card-title {
-    color: $gov-maroon;
-    font-size: 1.2rem;
-    font-weight: 600;
-  }
-
-  .icon-circle {
-    background: $gov-gray;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin: 10px auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    ion-icon {
-      font-size: 30px;
-      color: $gov-maroon;
-    }
-  }
-}
-
-.gov-item {
-  --background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  margin-bottom: 10px;
-
-  h3 {
-    color: $gov-maroon;
-    font-weight: bold;
-  }
-}
-
-.search-container {
-  margin-top: -25px; // Overlap effect
-  position: relative;
-  z-index: 10;
+.horizontal-layout {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-align: left;
 }

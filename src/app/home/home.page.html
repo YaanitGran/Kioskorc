@@ -1,90 +1,45 @@
-<ion-header [translucent]="true">
-  <ion-toolbar class="gov-toolbar">
-    <ion-title>
-      Registro Civil: Guía del Kiosco Digital
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <div class="header-banner ion-padding ion-text-center">
-    <h1>Trámites del Registro Civil</h1>
-    <p>Consulta requisitos, direcciones y horarios de forma inmediata [cite: 4]</p>
+<app-header></app-header>
+<ion-content [fullscreen]="true" class="ion-padding kiosk-background">
+  <div class="header-container">
+    <img src="assets/img/gob-mexico-logo.png" alt="Government Logo" class="main-logo">
   </div>
 
-  <div class="search-container ion-padding-horizontal">
-    <ion-searchbar 
-      placeholder="¿Qué trámite buscas? (ej. Acta de Nacimiento)" 
-      class="custom-search">
-    </ion-searchbar>
-  </div>
-
-  <ion-grid class="ion-padding">
-    <ion-row>
-      <ion-col size="12" size-md="4">
-        <ion-card class="procedure-card" (click)="abrirTramite('nacimiento')">
-          <ion-card-header>
-            <div class="icon-circle">
-              <ion-icon name="person-add-outline"></ion-icon>
-            </div>
-            <ion-card-title>Acta de Nacimiento</ion-card-title>
-          </ion-card-header>
+  <ion-grid fixed>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-md="5">
+        <ion-card (click)="navigateTo('certified-copy')" class="menu-card action-blue">
           <ion-card-content>
-            Certificado de Nacido Vivo, actas de los padres e identificación oficial[cite: 27].
+            <ion-icon name="document-text-outline"></ion-icon>
+            <h2>Solicite acta certificada</h2>
+            <p>Obtenga extractos de acta o copias del libro de manera rápida.</p>
           </ion-card-content>
         </ion-card>
       </ion-col>
 
-      <ion-col size="12" size-md="4">
-        <ion-card class="procedure-card" (click)="abrirTramite('matrimonio')">
-          <ion-card-header>
-            <div class="icon-circle">
-              <ion-icon name="heart-outline"></ion-icon>
-            </div>
-            <ion-card-title>Acta de Matrimonio</ion-card-title>
-          </ion-card-header>
+      <ion-col size="12" size-md="5">
+        <ion-card (click)="navigateTo('procedures')" class="menu-card action-green">
           <ion-card-content>
-            Solicitud formal, actas de nacimiento y certificado médico prenupcial[cite: 27].
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-
-      <ion-col size="12" size-md="4">
-        <ion-card class="procedure-card" (click)="abrirTramite('defuncion')">
-          <ion-card-header>
-            <div class="icon-circle">
-              <ion-icon name="ribbon-outline"></ion-icon>
-            </div>
-            <ion-card-title>Acta de Defunción</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            Certificado Médico de Defunción y acta de nacimiento del fallecido[cite: 27].
+            <ion-icon name="folder-open-outline"></ion-icon>
+            <h2>Trámites</h2>
+            <p>Consulte requisitos, costos y documentos para su trámite.</p>
           </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
 
-    <ion-row class="info-section ion-margin-top">
-      <ion-col size="12" size-md="6">
-        <ion-item lines="none" class="gov-item">
-          <ion-icon slot="start" name="business" color="primary"></ion-icon>
-          <ion-label>
-            <h3>Ubicación Central [cite: 28]</h3>
-            <p>Juzgado Central (Arcos de Belén)</p>
-            <p><small>Col. Doctores, Alcaldía Cuauhtémoc</small></p>
-          </ion-label>
-        </ion-item>
-      </ion-col>
-      <ion-col size="12" size-md="6">
-        <ion-item lines="none" class="gov-item">
-          <ion-icon slot="start" name="time" color="primary"></ion-icon>
-          <ion-label>
-            <h3>Horarios de Atención [cite: 28, 70]</h3>
-            <p>Lunes a Viernes: 08:00 a 15:00 hrs</p>
-            <p><strong>Módulos 24/7:</strong> Juzgados 14 y 16 [cite: 70]</p>
-          </ion-label>
-        </ion-item>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-md="10">
+        <ion-card (click)="navigateTo('locations')" class="menu-card action-orange">
+          <ion-card-content class="horizontal-layout">
+            <ion-icon name="location-outline"></ion-icon>
+            <div>
+              <h2>Ubicación de Juzgados</h2>
+              <p>Encuentre la oficina más cercana, horarios y rutas de llegada.</p>
+            </div>
+          </ion-card-content>
+        </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
+<app-footer></app-footer>
