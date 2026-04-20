@@ -21,6 +21,7 @@ import { HeaderComponent } from '../components/header/header.component';
 import { FooterComponent } from '../components/footer/footer.component';
 import { ProcedureSelectorComponent } from '../components/procedure-selector/procedure-selector.component';
 import { MapViewerComponent } from '../components/map-viewer/map-viewer.component';
+import { InfoDisplayComponent } from '../components/info-display/info-display.component';
 
 
 @Component({
@@ -44,6 +45,7 @@ import { MapViewerComponent } from '../components/map-viewer/map-viewer.componen
     FooterComponent,
     ProcedureSelectorComponent,
     MapViewerComponent,
+    InfoDisplayComponent,
   ],
 })
 export class HomePage {
@@ -130,7 +132,60 @@ export class HomePage {
    * @param option The selected procedure object
    */
   handleOptionSelected(option: any) {
-    console.log('Trámite seleccionado:', option.label);
-    // Here we will eventually change viewState to 'info' to show requirements
+    const details = this.proceduresDatabase[option.label];
+  
+  if (details) {
+    this.selectedProcedureData = details;
+    this.viewState = 'info';
+  } else {
+    // Fallback if no specific data is found yet
+    this.selectedProcedureData = {
+      title: option.label,
+      requirements: ['Cargando requisitos legales...'],
+      steps: ['Paso 1: Acudir a ventanilla.'],
+      cost: option.cost || 0
+    };
+    this.viewState = 'info';
   }
+  }
+
+  // Add this property to your HomePage class
+selectedProcedureData: any = null;
+
+// Mock database for specific procedure details
+proceduresDatabase: any = {
+  'Extracto de Acta': {
+    title: 'REQUISITOS Y PASOS PARA EL EXTRACTO DE ACTA',
+    requirements: [
+      'Identificación oficial vigente.',
+      'CURP (si está disponible).',
+      'Datos de la persona (Nombre, fecha de nacimiento, lugar de registro).'
+    ],
+    steps: [
+      'Acuda al Kiosko.',
+      'Seleccione "Solicite acta certificada".',
+      'Elija "Extracto de Acta".',
+      'Proporcione datos de Identificación.',
+      'Realice el pago.',
+      'Imprima el extracto.'
+    ],
+    cost: 90.00
+  },
+  'Nacimiento': {
+    title: 'REQUISITOS PARA REGISTRO DE NACIMIENTO',
+    requirements: [
+      'Certificado de nacimiento emitido por el hospital.',
+      'Identificación oficial de los padres.',
+      'Acta de matrimonio (si aplica).',
+      'Dos testigos con identificación.'
+    ],
+    steps: [
+      'Presentarse con el menor en el juzgado.',
+      'Entregar documentación completa.',
+      'Firma de documentos y toma de huellas.',
+      'Recepción de la primera copia certificada gratuita.'
+    ],
+    cost: 0.00 // Generalmente el primer registro es gratuito
+  }
+};
 }

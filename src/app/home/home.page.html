@@ -55,6 +55,13 @@
     <app-map-viewer (onBack)="handleBack()"></app-map-viewer>
   }
 
+  @if (viewState === 'info') {
+  <app-info-display 
+    [data]="selectedProcedureData"
+    (onBack)="viewState = 'selector'">
+  </app-info-display>
+}
+
 </ion-content>
 
 <app-footer></app-footer>

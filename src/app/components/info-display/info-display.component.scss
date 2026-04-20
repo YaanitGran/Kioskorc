@@ -1,0 +1,56 @@
+.info-container {
+  padding: 30px;
+  background: white;
+  border-radius: 20px;
+  margin: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+
+  .procedure-title {
+    color: #9f2241; /* Color institucional */
+    font-size: 2.5rem;
+    font-weight: bold;
+    border-bottom: 2px solid #d4c19c;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+  }
+}
+
+.content-box {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 15px;
+  height: 100%;
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #4a4a4a;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+}
+
+.steps-list {
+  padding-left: 20px;
+  li {
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    color: #333;
+  }
+}
+
+.cost-badge {
+  background: #2d5a4c;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 50px;
+  font-size: 1.3rem;
+  display: inline-block;
+}
+
+.qr-placeholder {
+  font-size: 100px;
+  color: #333;
+}
