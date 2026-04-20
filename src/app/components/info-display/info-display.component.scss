@@ -54,3 +54,26 @@
   font-size: 100px;
   color: #333;
 }
+
+.back-button {
+  --color: #4a4a4a; /* Dark gray for high contrast */
+  --padding-start: 0;
+  font-size: 1.1rem;
+  font-weight: 700; /* Bold text as seen in your reference image */
+  margin-bottom: 10px;
+  text-transform: uppercase; /* Match the style in image_68133f.png */
+  letter-spacing: 1px;
+  
+  ion-icon {
+    font-size: 1.4rem;
+    margin-right: 5px;
+    /* Use the same color as text */
+    color: #4a4a4a;
+  }
+
+  /* Optional: Highlight when pressed for tactile feedback */
+  &:active {
+    --color: #9f2241; /* Institutional maroon on click */
+    opacity: 0.7;
+  }
+}
