@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Procedure } from '../models/procedure.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -31,7 +33,15 @@ export class ProcedureService {
       category: 'tramite'
     }
   ];
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  getProcedures(): Observable<Procedure[]> {
+    // Cuando el backend esté listo, esto será: return this.http.get<Procedure[]>('url_api');
+    const mockData: Procedure[] = [
+      /* Tus datos de Matrimonio, etc. */
+    ];
+    return of(mockData);
+  }
 
   /** * Gets all procedures by category */
   getProceduresByCategory(category: 'acta' | 'tramite'): Procedure[] {
