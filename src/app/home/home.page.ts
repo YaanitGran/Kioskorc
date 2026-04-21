@@ -22,6 +22,7 @@ import { FooterComponent } from '../components/footer/footer.component';
 import { ProcedureSelectorComponent } from '../components/procedure-selector/procedure-selector.component';
 import { MapViewerComponent } from '../components/map-viewer/map-viewer.component';
 import { InfoDisplayComponent } from '../components/info-display/info-display.component';
+import { ProcedureService } from '../services/procedure';
 
 
 @Component({
@@ -56,7 +57,7 @@ export class HomePage {
   selectorTitle: string = '';
   currentOptions: any[] = [];
 
-  constructor() {
+  constructor(private procedureService: ProcedureService) {
     addIcons({documentTextOutline,folderOpenOutline,locationOutline, personOutline,heartOutline,ribbonOutline,bookOutline});
   }
   /**
