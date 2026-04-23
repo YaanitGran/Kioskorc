@@ -1,0 +1,59 @@
+<div class="admin-wrapper">
+  <div class="top-bar">
+    <ion-button fill="clear" (click)="logout()" class="back-button">
+      <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+      Cerrar Sesión
+    </ion-button>
+  </div>
+
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" class="ion-text-center header-section">
+        <h1 class="title">Sistema de Gestión del Kiosko</h1>
+        <p class="sub-title">Seleccione una categoría para ver y gestionar los registros</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-sm="6" size-lg="3">
+        <ion-card (click)="selectAction('tramites')" class="menu-card action-blue">
+          <ion-card-content>
+            <ion-icon name="document-text-outline"></ion-icon>
+            <h2>Trámites</h2>
+            <p>Ver, editar o dar de alta trámites y requisitos.</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="12" size-sm="6" size-lg="3">
+        <ion-card (click)="selectAction('juzgados')" class="menu-card action-orange">
+          <ion-card-content>
+            <ion-icon name="location-outline"></ion-icon>
+            <h2>Juzgados</h2>
+            <p>Administrar sedes, horarios y ubicaciones.</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="12" size-sm="6" size-lg="3">
+        <ion-card (click)="selectAction('kioskos')" class="menu-card action-green">
+          <ion-card-content>
+            <ion-icon name="hardware-chip-outline"></ion-icon>
+            <h2>Kioskos</h2>
+            <p>Gestionar inventario y estado de las unidades físicas.</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="12" size-sm="6" size-lg="3">
+        <ion-card (click)="selectAction('faq')" class="menu-card action-blue">
+          <ion-card-content>
+            <ion-icon name="help-circle-outline"></ion-icon>
+            <h2>Preguntas</h2>
+            <p>Configurar el catálogo de dudas y respuestas.</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

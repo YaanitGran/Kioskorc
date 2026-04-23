@@ -1,0 +1,74 @@
+<app-header></app-header>
+
+<ion-content class="ion-padding kiosk-background">
+  <div [ngClass]="{'login-wrapper': adminViewState === 'login', 'admin-full-container': adminViewState !== 'login'}">
+    
+    @if (adminViewState === 'login') {
+      <div class="login-box">
+        <div class="header-container">
+          <ion-icon name="lock-closed-outline" class="lock-icon"></ion-icon>
+          <h1>Acceso Administrador</h1>
+          <p>Ingrese sus credenciales para gestionar el kiosko</p>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+          <ion-item lines="full" class="custom-input">
+            <ion-label position="floating">ID de Administrador</ion-label>
+            <ion-input type="number" formControlName="adminId" placeholder="Ingrese ID"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full" class="custom-input">
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input type="password" formControlName="password" placeholder="••••••"></ion-input>
+          </ion-item>
+
+          <ion-button expand="block" type="submit" class="login-button action-blue" [disabled]="!loginForm.valid">
+            Iniciar Sesión
+          </ion-button>
+
+          <div class="ion-text-center ion-margin-top">
+            <p class="sub-text">¿Eres un administrador nuevo?</p>
+            <ion-button fill="clear" size="small" (click)="goToRegister()">
+              Crear cuenta de administrador
+            </ion-button>
+          </div>
+        </form>
+      </div>
+    }
+
+    @if (adminViewState === 'admin-home') {
+      <app-admin-home 
+        (onOptionSelected)="openCategoryList($event)"
+        (onLogout)="adminViewState = 'login'">
+      </app-admin-home>
+    }
+
+    @if (adminViewState === 'admin-list') {
+      <app-list 
+        [category]="selectedCategory"
+        (onBack)="adminViewState = 'admin-home'"
+        (onAction)="handleListAction($event)">
+      </app-list>
+    }
+
+    @if (adminViewState === 'form') {
+      <app-form 
+        [category]="selectedCategory" 
+        [actionType]="currentAction" 
+        [data]="selectedItem"
+        (onBack)="adminViewState = 'admin-list'">
+      </app-form>
+    }
+
+    @if (adminViewState === 'register') {
+      <app-form 
+        [category]="'administradores'" 
+        [actionType]="'add'" 
+        (onBack)="adminViewState = 'login'">
+      </app-form>
+    }
+
+  </div>
+</ion-content>
+
+<app-footer></app-footer>

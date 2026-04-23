@@ -1,0 +1,176 @@
+<div class="form-wrapper">
+  <div class="top-bar">
+    <ion-button fill="clear" (click)="onBack.emit()" class="back-button">
+      <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+      Cancelar y Volver
+    </ion-button>
+  </div>
+
+  <div class="form-container">
+    <h1 class="ion-text-center">
+      {{ actionType === 'add' ? 'Nuevo' : actionType === 'edit' ? 'Editar' : 'Eliminar' }} 
+      {{ category === 'faq' ? 'Pregunta' : category.slice(0, -1) }}
+    </h1>
+
+    <form [formGroup]="dynamicForm" (ngSubmit)="submit()">
+      
+      @if (category === 'tramites') {
+        <ion-item lines="full">
+          <ion-label position="floating">Nombre del Trámite</ion-label>
+          <ion-input formControlName="nombre" autocomplete="off"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Descripción Detallada</ion-label>
+          <ion-textarea formControlName="descripcion" [autoGrow]="true"></ion-textarea>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">ID de Costo Relacionado</ion-label>
+          <ion-input type="number" formControlName="id_costo" autocomplete="off"></ion-input>
+          <ion-note slot="helper">Debe existir en la tabla 'costo'</ion-note>
+        </ion-item>
+      }
+
+      @if (category === 'juzgados') {
+        <ion-item lines="full">
+          <ion-label position="floating">Nombre del Juzgado</ion-label>
+          <ion-input formControlName="nombre" autocomplete="off"></ion-input>
+        </ion-item>
+        <ion-row>
+          <ion-col size="12" size-md="6"> <ion-item lines="full">
+              <ion-label position="floating">Alcaldía</ion-label>
+              <ion-input formControlName="alcaldia" autocomplete="off"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="12" size-md="6">
+            <ion-item lines="full">
+              <ion-label position="floating">Teléfono</ion-label>
+              <ion-input type="tel" formControlName="telefono" autocomplete="off"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-item lines="full">
+          <ion-label position="floating">Dirección Completa</ion-label>
+          <ion-textarea formControlName="direccion" [autoGrow]="true"></ion-textarea>
+        </ion-item>
+        <ion-row>
+          <ion-col size="12" size-md="6">
+            <ion-item lines="full">
+              <ion-label position="floating">Latitud</ion-label>
+              <ion-input type="number" formControlName="latitud" autocomplete="off"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="12" size-md="6">
+            <ion-item lines="full">
+              <ion-label position="floating">Longitud</ion-label>
+              <ion-input type="number" formControlName="longitud" autocomplete="off"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-item lines="full">
+          <ion-label position="floating">Horario de Atención</ion-label>
+          <ion-input formControlName="horario_atencion" autocomplete="off"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Estado</ion-label>
+          <ion-select formControlName="estado">
+            <ion-select-option value="activo">Activo</ion-select-option>
+            <ion-select-option value="remodelacion">Remodelación</ion-select-option>
+            <ion-select-option value="cerrado">Cerrado</ion-select-option>
+          </ion-select>
+        </ion-item>
+      }
+
+      @if (category === 'kioskos') {
+        <ion-item lines="full">
+          <ion-label position="floating">Número de Serie</ion-label>
+          <ion-input formControlName="numero_serie" autocomplete="off"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Ubicación Física</ion-label>
+          <ion-textarea formControlName="ubicacion_fisica" [autoGrow]="true"></ion-textarea>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Estado Operativo</ion-label>
+          <ion-select formControlName="estado">
+            <ion-select-option value="activo">Activo</ion-select-option>
+            <ion-select-option value="mantenimiento">Mantenimiento</ion-select-option>
+            <ion-select-option value="inactivo">Inactivo</ion-select-option>
+          </ion-select>
+        </ion-item>
+      }
+
+      @if (category === 'faq') {
+        <ion-item lines="full">
+          <ion-label position="floating">Pregunta (Usuario)</ion-label>
+          <ion-input formControlName="pregunta" autocomplete="off"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Respuesta Oficial</ion-label>
+          <ion-textarea formControlName="respuesta" [autoGrow]="true"></ion-textarea>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Categoría del FAQ</ion-label>
+          <ion-select formControlName="categoria">
+            <ion-select-option value="General">General</ion-select-option>
+            <ion-select-option value="Trámites">Trámites</ion-select-option>
+            <ion-select-option value="Pagos">Pagos</ion-select-option>
+            <ion-select-option value="Técnico">Soporte Técnico</ion-select-option>
+          </ion-select>
+        </ion-item>
+      }
+
+      @if (category === 'administradores') {
+        <ion-item lines="full">
+          <ion-label position="floating">ID de Administrador</ion-label>
+          <ion-input type="number" formControlName="id_administrador" autocomplete="off"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Nombre(s)</ion-label>
+          <ion-input formControlName="nombre" autocomplete="off"></ion-input>
+        </ion-item>
+        <ion-row>
+          <ion-col size="12" size-md="6">
+            <ion-item lines="full">
+              <ion-label position="floating">Apellido Paterno</ion-label>
+              <ion-input formControlName="ap_paterno" autocomplete="off"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="12" size-md="6">
+            <ion-item lines="full">
+              <ion-label position="floating">Apellido Materno</ion-label>
+              <ion-input formControlName="ap_materno" autocomplete="off"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        @if (actionType !== 'delete') {
+          <ion-item lines="full">
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input type="password" formControlName="contrasena" autocomplete="new-password"></ion-input>
+          </ion-item>
+        }
+      }
+
+      <div class="ion-padding-top ion-margin-top">
+        @if (actionType === 'add') {
+          <ion-button expand="block" color="success" type="submit" [disabled]="!dynamicForm.valid">
+            <ion-icon name="add-outline" slot="start"></ion-icon>
+            Agregar Registro
+          </ion-button>
+        }
+        @if (actionType === 'edit') {
+          <ion-button expand="block" color="primary" type="submit" [disabled]="!dynamicForm.valid">
+            <ion-icon name="save-outline" slot="start"></ion-icon>
+            Guardar Cambios
+          </ion-button>
+        }
+        @if (actionType === 'delete') {
+          <ion-button expand="block" color="danger" type="submit">
+            <ion-icon name="trash-outline" slot="start"></ion-icon>
+            Confirmar Eliminación
+          </ion-button>
+          <p class="warning-text">¡Atención! Se eliminará este registro permanentemente.</p>
+        }
+      </div>
+    </form>
+  </div>
+</div>
