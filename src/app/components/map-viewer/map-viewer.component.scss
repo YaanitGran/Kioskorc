@@ -1,0 +1,46 @@
+.map-container {
+  padding: 10px;
+  .section-title {
+    color: #9f2241;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+}
+
+.locations-list {
+  max-height: 500px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.location-item {
+  --padding-start: 15px;
+  --padding-bottom: 10px;
+  margin-bottom: 5px;
+}
+
+.map-placeholder {
+  height: 500px;
+  background: #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  position: relative;
+
+  ion-icon {
+    font-size: 80px;
+    color: #999;
+  }
+}
+
+.office-popover {
+  position: absolute;
+  bottom: 20px;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}

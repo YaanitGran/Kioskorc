@@ -1,0 +1,61 @@
+<div class="map-container">
+  <h1 class="ion-text-center section-title">Directorio de Juzgados del Registro Civil</h1>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="4">
+        
+        <ion-item class="ion-margin-bottom" lines="none" style="border-radius: 8px; background: var(--ion-color-light);">
+          <ion-icon name="funnel-outline" slot="start" color="primary"></ion-icon>
+          <ion-select
+            label="Filtrar Alcaldía"
+            label-placement="floating"
+            value="Todas"
+            (ionChange)="filtrarPorAlcaldia($event)"
+            cancelText="Cancelar"
+            okText="Aceptar">
+            <ion-select-option value="Todas">Todas las Alcaldías</ion-select-option>
+            @for (alc of listaAlcaldias; track alc) {
+              <ion-select-option [value]="alc">{{ alc }}</ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+
+        <div class="locations-list" style="height: 50vh; overflow-y: auto;">
+          @for (office of offices; track office.id_juzgado) {
+            <ion-item button (click)="selectOffice(office)" class="location-item" [color]="selectedOffice?.id_juzgado === office.id_juzgado ? 'light' : ''">
+              <ion-label>
+                <h3>{{ office.nombre }}</h3>
+                <p>{{ office.alcaldia }}</p>
+                <p>{{ office.direccion }}</p>
+                <ion-note color="primary">{{ office.horario_atencion }}</ion-note>
+              </ion-label>
+            </ion-item>
+          }
+        </div>
+      </ion-col>
+
+      <ion-col size="12" size-md="8">
+        <div class="map-placeholder" style="position: relative; height: 60vh; width: 100%;">
+          
+          <div id="mapId" style="height: 100%; width: 100%; border-radius: 8px; z-index: 1;"></div>
+          
+          @if (selectedOffice) {
+            <div class="office-popover" style="position: absolute; bottom: 20px; left: 20px; z-index: 1000; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+              <strong>Sede seleccionada:</strong><br>
+              <span style="font-size: 1.2em; color: var(--ion-color-primary);">{{ selectedOffice.nombre }}</span><br>
+              {{ selectedOffice.telefono ? 'Tel: ' + selectedOffice.telefono : 'Sin teléfono registrado' }}
+            </div>
+          }
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="ion-text-center ion-margin-top">
+    <ion-button fill="clear" color="medium" (click)="goBack()">
+      <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+      Regresar al Menú Principal
+    </ion-button>
+  </div>
+</div>

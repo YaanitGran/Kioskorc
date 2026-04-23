@@ -1,0 +1,23 @@
+.footer-toolbar {
+  --background: #333333; /* Dark footer as requested */
+  --padding-top: 15px;
+  --padding-bottom: 15px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.footer-logo {
+  height: 45px;
+  filter: brightness(0) invert(1); /* Makes the logo white for dark background */
+}
+
+.social-section {
+  ion-icon {
+    font-size: 28px;
+  }
+}
