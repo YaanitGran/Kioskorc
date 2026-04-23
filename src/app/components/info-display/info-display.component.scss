@@ -76,4 +76,29 @@
     --color: #9f2241; /* Institutional maroon on click */
     opacity: 0.7;
   }
+  /* Styles for the QR Code container */
+.qr-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  border: 1px solid #e0e0e0;
+
+  qrcode {
+    /* Ensures the canvas/image doesn't overflow */
+    max-width: 100%;
+    height: auto;
+  }
+
+  .qr-instruction {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    color: #555;
+    font-weight: bold;
+  }
+}
 }
