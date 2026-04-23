@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
 import { 
-  IonHeader, 
-  IonToolbar, 
-  IonTitle, 
   IonContent,
-  IonSearchbar,
   IonIcon,
   IonGrid,
   IonRow,
@@ -30,11 +26,7 @@ import { ProcedureService } from '../services/procedure';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   imports: [
-    IonHeader, 
-    IonToolbar, 
-    IonTitle, 
-    IonContent, 
-    IonSearchbar,
+    IonContent,
     IonIcon,
     IonGrid,
     IonRow,
