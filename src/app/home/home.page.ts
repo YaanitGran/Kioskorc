@@ -18,6 +18,7 @@ import { FooterComponent } from '../components/footer/footer.component';
 import { ProcedureSelectorComponent } from '../components/procedure-selector/procedure-selector.component';
 import { MapViewerComponent } from '../components/map-viewer/map-viewer.component';
 import { InfoDisplayComponent } from '../components/info-display/info-display.component';
+import { ProcedureService } from '../services/procedure';
 
 
 @Component({
@@ -48,7 +49,7 @@ export class HomePage {
   selectorTitle: string = '';
   currentOptions: any[] = [];
 
-  constructor() {
+  constructor(private procedureService: ProcedureService) {
     addIcons({documentTextOutline,folderOpenOutline,locationOutline, personOutline,heartOutline,ribbonOutline,bookOutline});
   }
   /**
@@ -91,22 +92,29 @@ export class HomePage {
           label: 'Nacimiento', 
           description: 'Requisitos para registro y actas de nacimiento.', 
           icon: 'person-outline', 
-          color: '#2d5a4c' 
+          color: '#b9b0b4' 
         },
         { 
           id: 11, 
           label: 'Matrimonio', 
           description: 'Información para celebrar matrimonios civiles.', 
           icon: 'heart-outline', 
-          color: '#2d5a4c' 
+          color: '#63b683' 
         },
         { 
           id: 12, 
           label: 'Defunción', 
           description: 'Guía y documentos para actas de defunción.', 
           icon: 'ribbon-outline', 
-          color: '#2d5a4c' 
-        }
+          color: '#ecc67e' 
+        },
+         { 
+          id: 12, 
+          label: 'Divorcio Administrativo', 
+          description: 'Guía y documentos para actas de Divorcio.', 
+          icon: 'ribbon-outline', 
+          color: '#98a1f7' 
+        },
       ];
       this.viewState = 'selector';
     }
